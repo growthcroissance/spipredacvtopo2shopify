@@ -36,7 +36,7 @@ let errorIndexs = [];
 
 console.log('Total number : ', metaObjects.length);
 
-async function createMetaObject(indexOfMetaObjectArray, debug) {
+async function UpsertMetaobject(indexOfMetaObjectArray, debug) {
     /**
      * Create log file once function ended.
      */
@@ -83,10 +83,10 @@ async function createMetaObject(indexOfMetaObjectArray, debug) {
         /**
          * if error occured add error message ot errorIndexs array
          */
-        if (res.data?.metaobjectCreate.userErrors.length > 0) errorIndexs.push(
+        if (res.data?.metaobjectUpsert.userErrors.length > 0) errorIndexs.push(
             {
                 index: indexOfMetaObjectArray,
-                errorMessage: res.data.metaobjectCreate.userErrors,
+                errorMessage: res.data.metaobjectUpsert.userErrors,
                 object: metaObjects[indexOfMetaObjectArray]
             }
         );
@@ -99,10 +99,10 @@ async function createMetaObject(indexOfMetaObjectArray, debug) {
         /**
          * Execute next index
          */
-        if (!debug) createMetaObject(indexOfMetaObjectArray);
+        if (!debug) UpsertMetaobject(indexOfMetaObjectArray);
     }).catch(err => {
         console.log(err)
     });
 }
 
-await createMetaObject(0);
+await UpsertMetaobject(0);

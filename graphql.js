@@ -1,3 +1,3 @@
-const graphQL = "mutation CreateMetaobject($metaobject: MetaobjectCreateInput!) { metaobjectCreate(metaobject: $metaobject) { metaobject { handle, type } userErrors { field, message, code } } }";
+const graphQL = "mutation UpsertMetaobject($handle: MetaobjectHandleInput!, $metaobject: MetaobjectUpsertInput!) { metaobjectUpsert(handle: $handle, metaobject: $metaobject) { metaobject { handle, type } userErrors { field, message, code } } }";
 
 export default graphQL;
