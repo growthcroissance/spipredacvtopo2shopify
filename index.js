@@ -122,7 +122,7 @@ handleArr.map(itineraire => {
       value: itineraire.profil
     },
     {
-      html: ``,
+      html: `${itineraire.discipline}`,
       value: `${itineraire.discipline}`
     },
     {
