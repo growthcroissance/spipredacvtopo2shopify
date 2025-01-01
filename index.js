@@ -36,7 +36,7 @@ metaObjects.forEach((item, ind, obj) => {
         fields.set(field.key, field.value);
     });
     handleArr.push({
-        handle:                       item.metaobject.handle,
+        handle:                       item.handle.handle,
         titre:                        fields.get('titre'),
         departement:                  fields.get('departement'),
         difficulte:                   fields.get('difficulte'),
