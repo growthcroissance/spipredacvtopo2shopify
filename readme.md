@@ -1,43 +1,51 @@
-## Vtopo Metaobject App
+## SPIP Redac VTOPO vers Shopify
 
-**Export your metaobjects as JSON in this file `./metaobject/metaobject.js`**
+Ce dépôt contient les outils de reprise des itinéraires VTOPO exportés depuis SPIP vers Shopify.
 
-```javascript
-export default [
-    {
-        ...
-    },
-    {
-        ...
-    },
-    {
-        ...
-    }
-]
-```
-
-**Replace with your accessToken in `createObject.js` file with metaobject create permission**
-
-```javascript
-const shopGraphQl = `https://{YOUR_STORE_DOMAIN}/admin/api/2023-01/graphql.json`; 
-// example : https://vtopo.myshopify.com/admin/api/2023-01/graphql.json
-
-const accessToken = `YOUR_TOKEN_HERE`; 
-// format : 'shpat_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-
-```
----
-
-**Create Metaobjects**
+## Installation
 
 ```shell
-npm run create-metaobject
+npm install
 ```
-<span>You can find occurred errors in `log.txt` file.</span>
 
-**Create JSON**
+Copier `.env.example` en `.env`, puis renseigner le token Shopify Admin avec les droits metaobjects nécessaires.
+
+```shell
+SHOPIFY_STORE_DOMAIN=vtopo.myshopify.com
+SHOPIFY_ADMIN_ACCESS_TOKEN=shpat_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+SHOPIFY_API_VERSION=2023-01
+```
+
+## Commandes
+
+Générer le JSON consommé par le tableau d'itinéraires:
 
 ```shell
 npm run create-json
 ```
-<span>You can find copy json data in `metaobjects-json.txt` file.</span>
+
+Le fichier est généré dans `output/metaobjects-json.txt`.
+
+Créer ou mettre à jour les metaobjects Shopify:
+
+```shell
+npm run upsert-metaobjects
+```
+
+Les erreurs éventuelles sont écrites dans `output/log.txt`.
+
+Vérifier la syntaxe des scripts:
+
+```shell
+npm run check
+```
+
+## Structure
+
+Voir `docs/structure.md`.
+
+## Contribution
+
+Voir `CONTRIBUTING.md` pour le workflow de branches, commits, PR et releases.
+
+Voir `docs/repository-workflow-audit.md` pour l'audit de reprise du dépôt.
